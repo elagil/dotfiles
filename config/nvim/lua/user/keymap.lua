@@ -19,6 +19,9 @@ map("n", "[d", vim.diagnostic.goto_prev, silent)
 map("n", "]d", vim.diagnostic.goto_next, silent)
 map("n", "<leader>k", vim.diagnostic.open_float, silent)
 
+-- Changing directory
+map("n", "<leader>cd", "<cmd>cd %:p:h<CR>:pwd<CR>", silent)
+
 -- Quitting
 map("n", "<leader>q", "<cmd>qa<cr>", silent)
 map("n", "<leader>Q", "<cmd>qa!<cr>", silent)
