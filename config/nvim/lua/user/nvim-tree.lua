@@ -19,6 +19,7 @@ nvim_tree.setup({
 	},
 	renderer = {
 		root_folder_modifier = ":t",
+		group_empty = true,
 		icons = {
 			glyphs = {
 				default = "",
@@ -60,10 +61,10 @@ nvim_tree.setup({
 		side = "left",
 		mappings = {
 			list = {
-				{ key = { "u" }, cb = tree_cb("dir_up") },
-				{ key = { "<Right>", "l", "<CR>", "o" }, cb = tree_cb("edit") },
-				{ key = { "<Left>", "h" }, cb = tree_cb("close_node") },
-				{ key = "v", cb = tree_cb("vsplit") },
+				{ key = "u", action = "dir_up" },
+				{ key = "o", action = "cd" },
+				{ key = "<Right>", action = "edit" },
+				{ key = "<Left>", action = "close_node" },
 			},
 		},
 	},

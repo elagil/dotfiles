@@ -15,6 +15,7 @@ map("n", "<c-g>", builtin.git_files, silent)
 map("n", "<c-a>", builtin.oldfiles, silent)
 map("n", "<c-f>", builtin.live_grep, silent)
 map("n", "<leader>fb", builtin.buffers, silent)
+map("n", "<leader>fc", builtin.commands, silent)
 map("n", "<leader>fh", builtin.help_tags, silent)
 map("n", "<leader>fd", function()
 	builtin.diagnostics({ bufnr = 0 })
@@ -31,10 +32,10 @@ telescope.setup({
 
 		mappings = {
 			i = {
-				["<Down>"] = actions.cycle_history_next,
-				["<Up>"] = actions.cycle_history_prev,
-				["<c-Down>"] = actions.move_selection_next,
-				["<c-Up>"] = actions.move_selection_previous,
+				["<c-Down>"] = actions.cycle_history_next,
+				["<c-Up>"] = actions.cycle_history_prev,
+				["<Down>"] = actions.move_selection_next,
+				["<Up>"] = actions.move_selection_previous,
 			},
 		},
 	},

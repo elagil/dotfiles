@@ -49,6 +49,12 @@ return packer.startup(function(use)
 	use("rcarriga/nvim-dap-ui") -- Debugging UI
 	use("folke/trouble.nvim") -- Pretty display of diagnostics
 	use("catppuccin/nvim") -- A theme
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
 
 	-- Automatic setup of configuration
 	if PACKER_BOOTSTRAP then
