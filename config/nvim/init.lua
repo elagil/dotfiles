@@ -1,14 +1,15 @@
--- Start plugins
-require("telescope").load_extension("fzf")
-require("nvim-tree").setup()
-require("gitsigns").setup()
-require("lualine").setup()
-require("Comment").setup()
+-- Load plugins first
+require("user/plugins")
 
--- Main configuration file
+-- Setup and load plugins
 require("user/options") -- General options
-require("user/plugins") -- Loading of plugins
 require("user/keymap") -- General keymap
-require("user/dap") -- DAP settings (debug services)
-require("user/lsp") -- LSP settings (language services)
-
+require("user/nvim-tree") -- Sidebar folder tree view
+require("user/lualine") -- Status line
+require("user/gitlines") -- Git status on the side
+require("user/comment") -- Commenting tool
+require("user/trouble") -- Show problems in a panel
+require("user/dap") -- DAP setup (debug services)
+require("user/lsp") -- LSP setup (language services)
+require("user/telescope") -- Telescope setup (searching)
+require("user/theming") -- Apply visual settings

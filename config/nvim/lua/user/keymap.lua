@@ -19,7 +19,7 @@ g.mapleader = " "
 local diag_float = {border = "single"}
 map("n", "[d", function() vim.diagnostic.goto_prev({float = diag_float}) end, silent)
 map("n", "]d", function() vim.diagnostic.goto_next({float = diag_float}) end, silent)
-map("n", "<c-k>", function() vim.diagnostic.open_float(diag_float) end, silent)
+map("n", "<leader>k", function() vim.diagnostic.open_float(diag_float) end, silent)
 
 -- Quitting
 map("n", "<leader>q", "<cmd>qa<cr>", silent)
@@ -27,9 +27,11 @@ map("n", "<leader>q", "<cmd>qa<cr>", silent)
 -- Better paste: does not yank while pasting in visual mode
 map("v", "p", '"_dP', silent)
 
--- Stay in indent mode after indenting
-map("v", "<", "<gv", silent)
-map("v", ">", ">gv", silent)
+-- Indenting with Tab/S-Tab
+map("v", "<s-tab>", "<gv", silent)
+map("v", "<tab>", ">gv", silent)
+map("n", "<s-tab>", "<<", silent)
+map("n", "<tab>", ">>", silent)
 
 -- Clear search highlights
 map("n", "<leader><leader>", "<cmd>nohl<cr>", silent)
@@ -62,35 +64,6 @@ map("n", "<leader>to", "<cmd>tabonly<cr>", silent)
 map("n", "<c-Left>", "<cmd>tabpre<cr>", silent)
 map("n", "<c-Right>", "<cmd>tabnext<cr>", silent)
 
--- Telescope
-local builtin = require("telescope.builtin")
-map("n", "<c-t>", builtin.find_files, silent)
-map("n", "<c-g>", builtin.git_files, silent)
-map("n", "<c-a>", builtin.oldfiles, silent)
-map("n", "<c-f>", builtin.live_grep, silent)
-map("n", "<leader>fb", builtin.buffers, silent)
-map("n", "<leader>fh", builtin.help_tags, silent)
-map("n", "<leader>fd", function() builtin.diagnostics({bufnr=0}) end, silent)
-map("n", "<leader>fD", builtin.diagnostics, silent)
-map("n", "<leader>fk", builtin.keymaps, silent)
-map("n", "<F12>", builtin.lsp_definitions, silent)
-map("n", "<F24>", builtin.lsp_references, silent) -- <F24> == <S-F12>
-
 -- NvimTree
 map("n", "<c-b>", ":NvimTreeToggle<CR>", silent)
 
--- DAP
-local dap = require("dap")
-local dapui = require("dapui")
-
-map("n", "<F5>", dap.continue, silent)
-map("n", "<F6>", dap.terminate, silent)
-map("n", "<F7>", dap.step_over, silent)
-map("n", "<F8>", dap.step_into, silent)
-map("n", "<F9>", dap.step_out, silent)
-map("n", "<F2>", dapui.eval, silent)
-map("n", "<leader>b", dap.toggle_breakpoint, silent)
-map("n", "<leader>B", function() dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end, silent)
-map("n", "<Leader>lp", function() dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: ")) end, silent)
-map("n", "<Leader>dl", dap.run_last, silent)
-map("n", "<leader>du", dapui.toggle, silent)
