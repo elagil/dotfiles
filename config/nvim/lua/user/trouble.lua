@@ -16,9 +16,9 @@ trouble.setup({
 local silent = { silent = true }
 local map = vim.keymap.set
 
-map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", silent)
-map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", silent)
-map("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", silent)
-map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", silent)
-map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", silent)
+map("n", "<leader>jj", "<cmd>TroubleToggle<cr>", silent)
+map("n", "<leader>jD", "<cmd>TroubleToggle workspace_diagnostics<cr>", silent)
+map("n", "<leader>jd", "<cmd>TroubleToggle document_diagnostics<cr>", silent)
+map("n", "<leader>jl", "<cmd>TroubleToggle loclist<cr>", silent)
+map("n", "<leader>jq", "<cmd>TroubleToggle quickfix<cr>", silent)
 map("n", "<F24>", "<cmd>TroubleToggle lsp_references<cr>", silent)
