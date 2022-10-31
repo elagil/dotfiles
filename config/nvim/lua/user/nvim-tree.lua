@@ -15,7 +15,6 @@ nvim_tree.setup({
 	open_on_tab = true,
 	update_focused_file = {
 		enable = true,
-		update_cwd = true,
 	},
 	renderer = {
 		root_folder_modifier = ":t",
@@ -69,3 +68,9 @@ nvim_tree.setup({
 		},
 	},
 })
+
+-- Mapping
+local map = vim.keymap.set
+local silent = { silent = true }
+
+map("n", "<c-b>", ":NvimTreeToggle<CR>", silent)

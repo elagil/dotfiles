@@ -13,7 +13,13 @@ local auto_format = function(client, bufnr)
 			group = augroup,
 			buffer = bufnr,
 			callback = function()
-				-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+				-- on 0.8, use below call.
+				-- vim.lsp.buf.format({
+				-- 	bufnr = bufnr,
+				-- 	filter = function(client)
+				-- 		return client.name == "null-ls"
+				-- 	end,
+				-- })
 				vim.lsp.buf.formatting_sync()
 			end,
 		})
@@ -32,15 +38,15 @@ null_ls.setup({
 				diagnostic.code = diagnostic.message_id
 			end,
 		}),
-		formatting.black, -- Black Python formatter
+		formatting.black.with({ extra_args = { "--fast" } }), -- Black Python formatter
 		formatting.reorder_python_imports, -- Reordering of Python imports
 		diagnostics.pyproject_flake8,
 
 		-- LUA
 		formatting.stylua, -- LUA styling
 
-		-- Generic
-		completion.spell, -- Spell check
+		-- General
+		diagnostics.codespell, -- Finds common spelling errors
 	},
 	on_attach = auto_format,
 })

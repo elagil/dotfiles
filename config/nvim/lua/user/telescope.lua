@@ -23,7 +23,9 @@ end, silent)
 map("n", "<leader>fD", builtin.diagnostics, silent)
 map("n", "<leader>fk", builtin.keymaps, silent)
 map("n", "<F12>", builtin.lsp_definitions, silent)
-map("n", "<F24>", builtin.lsp_references, silent) -- <F24> == <S-F12>
+map("n", "<leader>fr", builtin.lsp_references, silent)
+map("n", "<leader>fi", builtin.lsp_incoming_calls, silent)
+map("n", "<leader>fo", builtin.lsp_outgoing_calls, silent)
 
 telescope.setup({
 	defaults = {

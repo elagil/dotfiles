@@ -19,7 +19,7 @@ map("n", "[d", vim.diagnostic.goto_prev, silent)
 map("n", "]d", vim.diagnostic.goto_next, silent)
 map("n", "<leader>k", vim.diagnostic.open_float, silent)
 
--- Changing directory
+-- Changing directory to the current buffer
 map("n", "<leader>cd", "<cmd>cd %:p:h<CR>:pwd<CR>", silent)
 
 -- Quitting
@@ -65,6 +65,3 @@ map("n", "<leader>tc", "<cmd>tabclose<cr>", silent)
 map("n", "<leader>to", "<cmd>tabonly<cr>", silent)
 map("n", "<c-Left>", "<cmd>tabpre<cr>", silent)
 map("n", "<c-Right>", "<cmd>tabnext<cr>", silent)
-
--- NvimTree
-map("n", "<c-b>", ":NvimTreeToggle<CR>", silent)
