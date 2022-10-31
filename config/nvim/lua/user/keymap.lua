@@ -40,7 +40,7 @@ map("n", "<leader><leader>", "<cmd>nohl<cr>", silent)
 
 -- Save buffer
 map("i", "<c-s>", "<esc><cmd>w<cr>a", silent)
-map("n", "<leader>w", "<cmd>w<cr>", silent)
+map("n", "<c-s>", "<cmd>w<cr>", silent)
 
 -- Yank to clipboard
 map("v", "<c-c>", '"+y', silent)

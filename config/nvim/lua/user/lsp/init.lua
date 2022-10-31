@@ -30,6 +30,7 @@ local on_attach = function(client, bufnr)
 	map("n", "<leader>D", vim.lsp.buf.type_definition, silent)
 	map("n", "<F2>", vim.lsp.buf.rename, silent)
 	map("n", "<leader>ca", vim.lsp.buf.code_action, silent)
+	map("n", "<c-x>", vim.lsp.buf.formatting_sync, silent)
 end
 
 -- Change border of documentation hover window
