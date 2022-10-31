@@ -15,7 +15,7 @@ return packer.startup(function(use)
 	use("mfussenegger/nvim-dap-python") -- Python debug adapter
 	use("rcarriga/nvim-dap-ui") -- Debugging UI
 
-	-- Code completion and snippets
+	-- Code completion
 	use("hrsh7th/nvim-cmp") -- The completion tool itself
 	use("hrsh7th/cmp-nvim-lsp") -- LSP completion source
 	use("hrsh7th/cmp-nvim-lsp-document-symbol") -- Completions from symbols in the current buffer, during `/` search
@@ -23,9 +23,11 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-buffer") -- Completions from the current buffer
 	use("hrsh7th/cmp-path") -- Completions for file system paths and directories
 	use("hrsh7th/cmp-cmdline") -- Completions for the VIM command line
-	use("hrsh7th/vim-vsnip") -- Snippets
-	use("hrsh7th/cmp-vsnip") -- Snippet source for cmp
+
+	-- Snippets
 	use("rafamadriz/friendly-snippets") -- Snippet database
+	use("L3MON4D3/LuaSnip") -- Snippet engine
+	use("saadparwaiz1/cmp_luasnip") -- Snippet adapter for cmp
 
 	-- Telescope, a global search tool
 	use({ -- Telescope itself
