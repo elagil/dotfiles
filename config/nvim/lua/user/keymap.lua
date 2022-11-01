@@ -1,7 +1,6 @@
 -- The keymap
 local silent = { silent = true }
 local map = vim.keymap.set
-local cmd = vim.cmd
 local g = vim.g
 
 g.mapleader = " "
@@ -26,8 +25,13 @@ map("n", "<leader>cd", "<cmd>cd %:p:h<CR>:pwd<CR>", silent)
 map("n", "<leader>q", "<cmd>qa<cr>", silent)
 map("n", "<leader>Q", "<cmd>qa!<cr>", silent)
 
--- Better paste: does not yank while pasting in visual mode
+-- Yank to clipboard
+map("v", "<c-c>", '"+y', silent)
+
+-- Pasting
 map("v", "p", '"_dP', silent)
+map("n", "<leader>p", '"0p', silent)
+map("n", "<leader>P", '"0P', silent)
 
 -- Better indenting
 map("v", "<", "<gv", silent)
@@ -41,13 +45,6 @@ map("n", "<leader><leader>", "<cmd>nohl<cr>", silent)
 -- Save buffer
 map("i", "<c-s>", "<esc><cmd>w<cr>a", silent)
 map("n", "<c-s>", "<cmd>w<cr>", silent)
-
--- Yank to clipboard
-map("v", "<c-c>", '"+y', silent)
-
--- Paste from yank register
-map("n", "<leader>p", '"0p', silent)
-map("n", "<leader>P", '"0P', silent)
 
 -- Window movement
 map("n", "<m-Left>", "<c-w>h", silent)

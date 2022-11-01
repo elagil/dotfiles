@@ -23,18 +23,6 @@ catppuccin.setup({
 	integrations = {
 		native_lsp = { -- Support for nvim-lsp
 			enabled = true,
-			virtual_text = {
-				errors = {},
-				hints = {},
-				warnings = {},
-				information = {},
-			},
-			underlines = {
-				errors = { "undercurl" },
-				hints = { "undercurl" },
-				warnings = { "undercurl" },
-				information = { "undercurl" },
-			},
 		},
 		dap = { -- Support for nvim-dap
 			enabled = true,

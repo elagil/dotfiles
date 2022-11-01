@@ -6,6 +6,7 @@ require("user/options") -- General options
 require("user/keymap") -- General keymap
 require("user/nvim-tree") -- Sidebar folder tree view
 require("user/lualine") -- Status line
+-- require("user/bufferline") -- A line for buffer info
 require("user/gitlines") -- Git status on the side
 require("user/comment") -- Commenting tool
 require("user/trouble") -- Show problems in a panel

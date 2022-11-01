@@ -6,7 +6,7 @@ end
 
 require("user/lsp/diagnostics") -- VIM diagnostics
 require("user/lsp/completion") -- Autocompletion
-null_ls = require("user/lsp/null-ls") -- Linter/fixer engine
+local null_ls = require("user/lsp/null-ls") -- Linter/fixer engine
 require("user/lsp/mason") -- LSP installation
 
 local silent = { silent = true }
@@ -15,7 +15,7 @@ local map = vim.keymap.set
 -- Mappings for VIM LSP
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr) -- Unused variable is `client`
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -49,6 +49,13 @@ lspconfig.pyright.setup({
 })
 
 lspconfig.sumneko_lua.setup({
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
@@ -62,4 +69,3 @@ lspconfig.rust_analyzer.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
-

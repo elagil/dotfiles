@@ -14,13 +14,22 @@ if not dap_python_status_ok then
     return
 end
 
-dapui.setup()
-local sign = vim.fn.sign_define
-local map = vim.keymap.set
+dapui.setup({
+    floating = {
+        border = "rounded", -- Border style. Can be "single", "double" or "rounded"
+    },
+})
 
-sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = ""})
-sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = ""})
-sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = ""})
+local map = vim.keymap.set
+local signs = {
+    DapBreakpoint = "●",
+    DapBreakpointCondition = "●",
+    DapLogPoint = "◆",
+}
+
+for name, icon in pairs(signs) do
+    vim.fn.sign_define(name, { text = icon, texthl = name, linehl = "", numhl = "" })
+end
 
 -- Automatic open/close of debug UI
 dap.listeners.after.event_initialized["dapui_config"] = function()
@@ -36,6 +45,7 @@ end
 dap_python.setup("~/.virtualenvs/debugpy/bin/python")
 
 -- Bindings
+local silent = { silent = true }
 map("n", "<F5>", dap.continue, silent)
 map("n", "<F6>", dap.terminate, silent)
 map("n", "<F7>", dap.step_over, silent)
@@ -43,7 +53,11 @@ map("n", "<F8>", dap.step_into, silent)
 map("n", "<F9>", dap.step_out, silent)
 map("n", "<F2>", dapui.eval, silent)
 map("n", "<leader>b", dap.toggle_breakpoint, silent)
-map("n", "<leader>B", function() dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end, silent)
-map("n", "<Leader>lp", function() dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: ")) end, silent)
+map("n", "<leader>B", function()
+    dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+end, silent)
+map("n", "<Leader>lp", function()
+    dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+end, silent)
 map("n", "<Leader>dl", dap.run_last, silent)
 map("n", "<leader>du", dapui.toggle, silent)

@@ -1,25 +1,22 @@
 -- Set up VIM diagnostics
-local signs = {
-	{ name = "DiagnosticSignError", text = "" },
-	{ name = "DiagnosticSignWarn", text = "" },
-	{ name = "DiagnosticSignHint", text = "" },
-	{ name = "DiagnosticSignInfo", text = "" },
-}
+local symbols = { Error = "", Warn = "", Hint = "", Info = "" }
+-- local empty = { Error = "", Warn = "", Hint = "", Info = "" }
 
-for _, sign in ipairs(signs) do
-	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+local signs = symbols -- Can be `symbols` or `empty`
+
+for type, label in pairs(signs) do
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = label, texthl = hl, numhl = hl })
 end
 
 local config = {
-	virtual_text = false, -- disable virtual text
-	signs = {
-		active = signs, -- show signs
-	},
-	update_in_insert = true,
-	underline = true,
+	virtual_text = false,
+	signs = signs,
+	update_in_insert = false,
+	underline = false,
 	severity_sort = true,
 	float = {
-		focusable = true,
+		focusable = false,
 		style = "minimal",
 		border = "rounded",
 		source = "always",

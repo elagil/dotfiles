@@ -13,7 +13,9 @@ local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup({
 	open_on_tab = true,
+    hijack_cursor = true,
 	update_focused_file = {
+        update_root = false,
 		enable = true,
 	},
 	renderer = {
@@ -43,16 +45,6 @@ nvim_tree.setup({
 					ignored = "◌",
 				},
 			},
-		},
-	},
-	diagnostics = {
-		enable = true,
-		show_on_dirs = true,
-		icons = {
-			hint = "",
-			info = "",
-			warning = "",
-			error = "",
 		},
 	},
 	view = {

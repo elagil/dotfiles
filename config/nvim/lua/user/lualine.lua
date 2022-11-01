@@ -8,25 +8,43 @@ local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80
 end
 
+local shorten = function(str, length)
+	length = length or 20
+	local dots = 3
+
+	local first_half_length = math.ceil((length - 3) / 2)
+	local second_half_length = math.floor((length - 3) / 2)
+
+	if string.len(str) > (length + dots) then
+		return string.sub(str, 1, first_half_length) .. "..." .. string.sub(str, -second_half_length)
+	else
+		return str
+	end
+end
+
 local diagnostics = {
 	"diagnostics",
 	sources = { "nvim_diagnostic" },
 	sections = { "error", "warn" },
 	symbols = { error = " ", warn = " " },
-	colored = false,
+	-- colored = false,
 	always_visible = true,
 }
 
 local diff = {
 	"diff",
-	colored = false,
-	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+	-- colored = false,
 	cond = hide_in_width,
 }
 
 local filetype = {
 	"filetype",
 	icons_enabled = false,
+}
+
+local branch = {
+	"branch",
+	fmt = shorten,
 }
 
 lualine.setup({
@@ -36,14 +54,14 @@ lualine.setup({
 		theme = "auto",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "alpha", "dashboard" },
+		disabled_filetypes = { "NvimTree", "packer" },
 		always_divide_middle = true,
 	},
 	sections = {
 		lualine_a = { "mode" },
-		lualine_b = { "branch" },
+		lualine_b = { branch },
 		lualine_c = { diagnostics },
-		lualine_x = { "diff", "encoding", filetype },
+		lualine_x = { diff, "encoding", filetype, "filename" },
 		lualine_y = { "location" },
 		lualine_z = { "progress" },
 	},
