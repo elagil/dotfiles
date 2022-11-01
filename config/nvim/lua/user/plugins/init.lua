@@ -59,6 +59,7 @@ return packer.startup(function(use)
 	})
 	use("nvim-tree/nvim-web-devicons") -- An icons set, required by multiple other plugins
 	use("lukas-reineke/indent-blankline.nvim") -- Show indentation guides
+    use("williamboman/mason.nvim")
 	use("catppuccin/nvim") -- A theme
 
 	-- Automatic setup of configuration

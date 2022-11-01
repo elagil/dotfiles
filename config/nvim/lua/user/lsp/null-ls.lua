@@ -1,34 +1,40 @@
+local M = {}
+
 -- Set up null-ls for fixing/linting
 local status_ok, null_ls = pcall(require, "null-ls")
 if not status_ok then
 	return
 end
 
--- Automatic formatting callback
--- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
--- local on_attach = function(client, bufnr)
--- 	if client.supports_method("textDocument/formatting") then
--- 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
--- 		vim.api.nvim_create_autocmd("BufWritePre", {
--- 			group = augroup,
--- 			buffer = bufnr,
--- 			callback = function()
--- 				-- on 0.8, use below call.
--- 				-- vim.lsp.buf.format({
--- 				-- 	bufnr = bufnr,
--- 				-- 	filter = function(client)
--- 				-- 		return client.name == "null-ls"
--- 				-- 	end,
--- 				-- })
--- 				vim.lsp.buf.formatting_sync()
--- 			end,
--- 		})
--- 	end
--- end
-
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 local completion = null_ls.builtins.completion
+
+M.lsp_formatting = function(bufnr)
+	vim.lsp.buf.format({
+		filter = function(client)
+			return client.name == "null-ls" -- Use only null-ls for formatting
+		end,
+		bufnr = bufnr,
+	})
+end
+
+-- if you want to set up formatting on save, you can use this as a callback
+augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+-- add to your shared on_attach callback
+M.on_attach = function(client, bufnr)
+	if client.supports_method("textDocument/formatting") then
+		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = augroup,
+			buffer = bufnr,
+			callback = function()
+				lsp_formatting(bufnr)
+			end,
+		})
+	end
+end
 
 null_ls.setup({
 	sources = {
@@ -48,5 +54,6 @@ null_ls.setup({
 		-- General
 		diagnostics.codespell, -- Finds common spelling errors
 	},
-    -- on_attach = on_attach
 })
+
+return M

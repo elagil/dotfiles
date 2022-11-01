@@ -6,7 +6,8 @@ end
 
 require("user/lsp/diagnostics") -- VIM diagnostics
 require("user/lsp/completion") -- Autocompletion
-require("user/lsp/null-ls") -- Linter/fixer engine
+null_ls = require("user/lsp/null-ls") -- Linter/fixer engine
+require("user/lsp/mason") -- LSP installation
 
 local silent = { silent = true }
 local map = vim.keymap.set
@@ -28,9 +29,9 @@ local on_attach = function(client, bufnr)
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, silent)
 	map("n", "<leader>D", vim.lsp.buf.type_definition, silent)
-	map("n", "<F2>", vim.lsp.buf.rename, silent)
+	map("n", "<leader>rn", vim.lsp.buf.rename, silent)
 	map("n", "<leader>ca", vim.lsp.buf.code_action, silent)
-	map("n", "<c-x>", vim.lsp.buf.formatting_sync, silent)
+	map("n", "<leader>fm", null_ls.lsp_formatting, silent)
 end
 
 -- Change border of documentation hover window
@@ -61,3 +62,4 @@ lspconfig.rust_analyzer.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
+

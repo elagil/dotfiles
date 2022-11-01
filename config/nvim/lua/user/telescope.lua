@@ -12,8 +12,9 @@ map("n", "<c-t>", function()
 	builtin.find_files({ hidden = true })
 end, silent)
 map("n", "<c-g>", builtin.git_files, silent)
-map("n", "<c-a>", builtin.oldfiles, silent)
+map("n", "<c-p>", builtin.oldfiles, silent)
 map("n", "<c-f>", builtin.live_grep, silent)
+map("n", "<leader>ff", builtin.buffer_fuzzy_find, silent)
 map("n", "<leader>fb", builtin.buffers, silent)
 map("n", "<leader>fc", builtin.commands, silent)
 map("n", "<leader>fh", builtin.help_tags, silent)
@@ -31,7 +32,6 @@ telescope.setup({
 	defaults = {
 		path_display = { "smart" },
 		file_ignore_patterns = { ".git/", "node_modules" },
-
 		mappings = {
 			i = {
 				["<c-Down>"] = actions.cycle_history_next,
@@ -40,6 +40,27 @@ telescope.setup({
 				["<Up>"] = actions.move_selection_previous,
 			},
 		},
+		prompt_prefix = "   ",
+		selection_caret = "  ",
+		entry_prefix = "  ",
+		initial_mode = "insert",
+		selection_strategy = "reset",
+		sorting_strategy = "ascending",
+		layout_strategy = "horizontal",
+		layout_config = {
+			horizontal = {
+				prompt_position = "top",
+				preview_width = 0.55,
+				results_width = 0.8,
+			},
+			vertical = {
+				mirror = false,
+			},
+			width = 0.87,
+			height = 0.80,
+			preview_cutoff = 120,
+		},
+		border = {},
 	},
 })
 
