@@ -1,7 +1,7 @@
 -- Commenting tool
 local status_ok, comment = pcall(require, "Comment")
 if not status_ok then
-	return
+    return
 end
 
 comment.setup()
