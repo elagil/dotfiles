@@ -4,6 +4,8 @@ if not status_ok then
 	return
 end
 
+lsp_diagnostics = require("user/lsp/diagnostics")
+
 local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80
 end
@@ -26,14 +28,14 @@ local diagnostics = {
 	"diagnostics",
 	sources = { "nvim_diagnostic" },
 	sections = { "error", "warn" },
-	symbols = { error = " ", warn = " " },
-	-- colored = false,
+	symbols = { error = lsp_diagnostics.symbols.Error, warn = lsp_diagnostics.symbols.Warn },
+	colored = false,
 	always_visible = true,
 }
 
 local diff = {
 	"diff",
-	-- colored = false,
+	colored = false,
 	cond = hide_in_width,
 }
 
@@ -58,10 +60,10 @@ lualine.setup({
 		always_divide_middle = true,
 	},
 	sections = {
-		lualine_a = { "mode" },
+		lualine_a = { "filename" },
 		lualine_b = { branch },
 		lualine_c = { diagnostics },
-		lualine_x = { diff, "encoding", filetype, "filename" },
+		lualine_x = { diff, "encoding", filetype },
 		lualine_y = { "location" },
 		lualine_z = { "progress" },
 	},

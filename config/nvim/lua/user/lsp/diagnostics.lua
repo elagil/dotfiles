@@ -1,27 +1,20 @@
 -- Set up VIM diagnostics
 M = {}
-M.symbols = { Error = "", Warn = "", Hint = "", Info = "", Other = "" }
-empty = { Error = "", Warn = "", Hint = "", Info = "" }
+M.symbols = { Error = " ", Warn = " ", Hint = " ", Info = " ", Other = " " }
+M.empty = { Error = "", Warn = "", Hint = "", Info = "", Other = "" }
 
-for type, label in pairs(empty) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = label, texthl = hl, numhl = hl })
+for type, label in pairs(M.empty) do
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { icon = "", text = label, texthl = hl, numhl = hl })
 end
 
 local config = {
-    virtual_text = false,
-    signs = true,
-    update_in_insert = false,
-    underline = false,
-    severity_sort = true,
-    float = {
-        focusable = false,
-        style = "minimal",
-        border = "rounded",
-        source = "always",
-        header = "",
-        prefix = "",
-    },
+	virtual_text = false,
+	signs = true,
+	update_in_insert = false,
+	underline = false,
+	severity_sort = true,
+	float = require("user/options").float_config,
 }
 
 vim.diagnostic.config(config)

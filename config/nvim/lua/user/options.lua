@@ -1,4 +1,5 @@
 -- Settings
+local M = {}
 local opt = vim.opt
 
 -- General
@@ -8,7 +9,7 @@ opt.mouse = "a" -- Allows the use of a mouse
 opt.number = true -- Line numbering
 opt.relativenumber = true
 opt.cmdheight = 1 -- Space for the command line of VIM
-opt.signcolumn = "auto:1-4" -- Show the sign column with automatic width
+opt.signcolumn = "yes" -- Show the sign column
 opt.cursorline = true -- A line, where the cursor is
 
 -- Editor behaviour
@@ -34,3 +35,14 @@ opt.smartcase = true -- Case-sensitive search, if at least one uppercase letter 
 opt.tabstop = 4 -- Insert 4 spaces for a tab
 opt.shiftwidth = 4 -- Number of spaces per indentation
 opt.expandtab = true -- Expand tabs to spaces
+
+-- Exported options
+M.float_config = { -- Default float configuration
+	border = "rounded",
+	focusable = false,
+	style = "minimal",
+	source = "always",
+	header = "",
+	prefix = "",
+}
+return M

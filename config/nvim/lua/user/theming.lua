@@ -6,20 +6,6 @@ end
 
 catppuccin.setup({
 	flavour = "macchiato", -- mocha, macchiato, frappe, latte
-	styles = {
-		comments = {},
-		conditionals = {},
-		loops = {},
-		functions = {},
-		keywords = {},
-		strings = {},
-		variables = {},
-		numbers = {},
-		booleans = {},
-		properties = {},
-		types = {},
-		operators = {},
-	},
 	integrations = {
 		native_lsp = { -- Support for nvim-lsp
 			enabled = true,

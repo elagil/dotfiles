@@ -42,6 +42,7 @@ return packer.startup(function(use)
 		"nvim-telescope/telescope-fzf-native.nvim",
 		run = "make",
 	})
+	use({ "nvim-telescope/telescope-file-browser.nvim" }) -- Telescope file browser
 
 	-- Other tools
 	use("mg979/vim-visual-multi") -- Multicursor, like in VSCode
@@ -58,8 +59,9 @@ return packer.startup(function(use)
 		end,
 	})
 	use("nvim-tree/nvim-web-devicons") -- An icons set, required by multiple other plugins
+	use("RRethy/vim-illuminate") -- Illuminate occurrences of word under cursor
 	use("lukas-reineke/indent-blankline.nvim") -- Show indentation guides
-	use({ "akinsho/bufferline.nvim", tag = "v3.*" }) -- A bufferline
+	use({ "akinsho/bufferline.nvim", tag = "v3.*", after = "catppuccin" }) -- A bufferline
 	use("catppuccin/nvim") -- A theme
 
 	-- Automatic setup of configuration

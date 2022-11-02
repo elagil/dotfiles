@@ -29,7 +29,7 @@ local on_attach = function(_, bufnr) -- Unused variable is `client`
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, silent)
 	map("n", "<leader>D", vim.lsp.buf.type_definition, silent)
-	map("n", "<leader>rn", vim.lsp.buf.rename, silent)
+	map("n", "<F2>", vim.lsp.buf.rename, silent)
 	map("n", "<leader>ca", vim.lsp.buf.code_action, silent)
 	map("n", "<leader>fm", null_ls.lsp_formatting, silent)
 end

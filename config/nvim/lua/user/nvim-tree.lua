@@ -12,10 +12,10 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup({
-	open_on_tab = true,
-    hijack_cursor = true,
+	open_on_tab = false,
+	hijack_cursor = true,
 	update_focused_file = {
-        update_root = false,
+		update_root = false,
 		enable = true,
 	},
 	renderer = {
@@ -49,9 +49,21 @@ nvim_tree.setup({
 	},
 	view = {
 		adaptive_size = true,
-		side = "left",
+		float = {
+			enable = true,
+			quit_on_focus_loss = true,
+			open_win_config = {
+				relative = "editor",
+				border = require("user/options").float_config.border,
+				width = 30,
+				height = 30,
+				row = 1,
+				col = 1,
+			},
+		},
 		mappings = {
 			list = {
+				{ key = "<Esc>", action = "close" },
 				{ key = "u", action = "dir_up" },
 				{ key = "o", action = "cd" },
 				{ key = "<Right>", action = "edit" },
