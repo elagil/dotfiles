@@ -37,7 +37,7 @@ local format_on_save = function(client, bufnr)
 end
 
 local expand_config = function(file_name)
-    return vim.fn.expand("~/.config" .. file_name)
+    return vim.fn.expand("~/.config/toolchain/" .. file_name)
 end
 
 null_ls.setup({
@@ -48,13 +48,13 @@ null_ls.setup({
                 diagnostic.code = diagnostic.message_id
             end,
         }),
-        formatting.black.with({ extra_args = { "--fast", "--config", expand_config("black.toml") } }), -- Black Python formatter
+        formatting.black.with({ extra_args = { "--fast", "--config", expand_config("python/black.toml") } }), -- Black Python formatter
         formatting.reorder_python_imports, -- Reordering of Python imports
         diagnostics.pyproject_flake8,
 
         -- LUA
         formatting.stylua.with({ -- LUA styling
-            extra_args = { "--config-path", expand_config("stylua.toml") },
+            extra_args = { "--config-path", expand_config("lua/stylua.toml") },
         }),
 
         -- General

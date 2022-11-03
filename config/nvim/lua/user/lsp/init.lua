@@ -8,6 +8,7 @@ require("user/lsp/diagnostics") -- VIM diagnostics
 require("user/lsp/completion") -- Autocompletion
 local null_ls = require("user/lsp/null-ls") -- Linter/fixer engine
 require("user/lsp/mason") -- LSP installation
+require("user/lsp/treesitter") -- VIM diagnostics
 
 local silent = { silent = true }
 local map = vim.keymap.set
@@ -31,7 +32,6 @@ local on_attach = function(_, bufnr) -- Unused variable is `client`
     map("n", "<leader>D", vim.lsp.buf.type_definition, silent)
     map("n", "<F2>", vim.lsp.buf.rename, silent)
     map("n", "<leader>ca", vim.lsp.buf.code_action, silent)
-    map("n", "<leader>fm", null_ls.lsp_formatting, silent)
 end
 
 -- Change border of documentation hover window

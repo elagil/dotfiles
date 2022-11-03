@@ -9,6 +9,12 @@ return packer.startup(function(use)
     use("neovim/nvim-lspconfig") -- Configurations for Nvim LSP
     use("jose-elias-alvarez/null-ls.nvim") -- Adds linters and fixers to LSP
     use("williamboman/mason.nvim") -- Install LSP configurations
+    use({ -- Syntax highlighting with Treesitter
+        "nvim-treesitter/nvim-treesitter",
+        run = function()
+            require("nvim-treesitter.install").update({ with_sync = true })
+        end,
+    })
 
     -- Debugging
     use("mfussenegger/nvim-dap") -- Debug adapters
@@ -61,8 +67,8 @@ return packer.startup(function(use)
     use("nvim-tree/nvim-web-devicons") -- An icons set, required by multiple other plugins
     use("RRethy/vim-illuminate") -- Illuminate occurrences of word under cursor
     use("lukas-reineke/indent-blankline.nvim") -- Show indentation guides
-    use({ "akinsho/bufferline.nvim", tag = "v3.*", after = "catppuccin" }) -- A bufferline
-    use("catppuccin/nvim") -- A theme
+    use({ "catppuccin/nvim", as = "theme" }) -- A theme
+    use({ "akinsho/bufferline.nvim", tag = "v3.*", after = "theme" }) -- A bufferline
 
     -- Automatic setup of configuration
     if PACKER_BOOTSTRAP then

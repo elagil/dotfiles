@@ -6,6 +6,20 @@ end
 
 catppuccin.setup({
     flavour = "macchiato", -- mocha, macchiato, frappe, latte
+    styles = {
+        comments = { "italic" },
+        conditionals = { "italic" },
+        loops = {},
+        functions = { "italic" },
+        keywords = {},
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = { "bold" },
+        operators = {},
+    },
     integrations = {
         native_lsp = { -- Support for nvim-lsp
             enabled = true,
@@ -14,7 +28,7 @@ catppuccin.setup({
             enabled = true,
             enabled_ui = true, -- enable nvim-dap-ui
         },
-        treesitter = false, -- FIXME: Disable for now, since no treesitter is available
+        -- treesitter = true, -- FIXME: Disable for now, since no treesitter is available
     },
 })
 
