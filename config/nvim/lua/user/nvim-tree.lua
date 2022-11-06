@@ -13,9 +13,9 @@ local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup({
     open_on_tab = false,
-    hijack_cursor = true,
+    hijack_cursor = false,
     update_focused_file = {
-        update_root = false,
+        update_root = true,
         enable = true,
     },
     renderer = {

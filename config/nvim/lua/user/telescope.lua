@@ -16,7 +16,8 @@ end, silent)
 map("n", "<c-g>", builtin.git_files, silent)
 map("n", "<c-p>", builtin.oldfiles, silent)
 map("n", "<c-f>", builtin.live_grep, silent)
-map("n", "<leader>ff", builtin.current_buffer_fuzzy_find, silent)
+map("n", "<leader>fs", builtin.lsp_document_symbols, silent)
+map("n", "<leader>fS", builtin.lsp_workspace_symbols, silent)
 map("n", "<leader>fb", file_browser, silent)
 map("n", "<leader>fc", builtin.commands, silent)
 map("n", "<leader>fh", builtin.help_tags, silent)
@@ -37,6 +38,7 @@ telescope.setup({
         file_ignore_patterns = { ".git/", "node_modules" },
         mappings = {
             i = {
+                ["<Esc>"] = actions.close,
                 ["<c-Down>"] = actions.cycle_history_next,
                 ["<c-Up>"] = actions.cycle_history_prev,
                 ["<Down>"] = actions.move_selection_next,
@@ -45,11 +47,8 @@ telescope.setup({
         },
         prompt_prefix = "   ",
         selection_caret = "  ",
-        entry_prefix = "  ",
-        initial_mode = "insert",
-        selection_strategy = "reset",
         sorting_strategy = "ascending",
-        layout_strategy = "horizontal",
+        results_title = false,
         layout_config = {
             horizontal = {
                 prompt_position = "top",
@@ -63,7 +62,6 @@ telescope.setup({
             height = 0.80,
             preview_cutoff = 120,
         },
-        border = {},
     },
 })
 

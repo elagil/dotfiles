@@ -38,7 +38,7 @@ opt.expandtab = true -- Expand tabs to spaces
 
 -- Exported options
 M.float_config = { -- Default float configuration
-    border = "rounded",
+    border = "none",
     focusable = false,
     style = "minimal",
     source = "always",

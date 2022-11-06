@@ -72,7 +72,7 @@ for name, icon in pairs(signs) do
     vim.fn.sign_define(name, { text = icon, texthl = name, linehl = "", numhl = "" })
 end
 
-dap_python.setup("~/.virtualenvs/debugpy/bin/python")
+dap_python.setup() --"~/.virtualenvs/debugpy/bin/python")
 
 table.insert(dap.configurations.python, {
     type = "python",
@@ -94,8 +94,12 @@ map("n", "<Leader>lp", function()
     dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
 end, silent)
 map("n", "<Leader>dl", dap.run_last, silent)
-map("n", "<leader>ds", function() dapui.toggle(1) end, silent)
-map("n", "<leader>dt", function() dapui.toggle(2) end, silent)
+map("n", "<leader>ds", function()
+    dapui.toggle(1)
+end, silent)
+map("n", "<leader>dt", function()
+    dapui.toggle(2)
+end, silent)
 map("n", "<leader>e", function()
     execute_if_dap_active(dapui.eval)
 end, silent)

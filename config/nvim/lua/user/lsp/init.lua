@@ -36,9 +36,7 @@ local on_attach = function(_, bufnr) -- Unused variable is `client`
 end
 
 -- Change border of documentation hover window
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-})
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, require("user/options").float_config)
 
 -- Set up lspconfig
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
