@@ -15,6 +15,7 @@ return packer.startup(function(use)
             require("nvim-treesitter.install").update({ with_sync = true })
         end,
     })
+    use("lvimuser/lsp-inlayhints.nvim") -- Inlay hint support
 
     -- Debugging
     use("mfussenegger/nvim-dap") -- Debug adapters
@@ -68,7 +69,7 @@ return packer.startup(function(use)
     use("RRethy/vim-illuminate") -- Illuminate occurrences of word under cursor
     use("lukas-reineke/indent-blankline.nvim") -- Show indentation guides
     use({ "catppuccin/nvim", as = "theme" }) -- A theme
-    use({ "akinsho/bufferline.nvim", tag = "v3.*", after = "theme" }) -- A bufferline
+    use({ "akinsho/bufferline.nvim", tag = "v3.*", after = "theme" }) -- A bufferline, FIXME: not loading.
 
     -- Automatic setup of configuration
     if PACKER_BOOTSTRAP then

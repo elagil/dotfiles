@@ -8,7 +8,8 @@ require("user/lsp/diagnostics") -- VIM diagnostics
 require("user/lsp/completion") -- Autocompletion
 local null_ls = require("user/lsp/null-ls") -- Linter/fixer engine
 require("user/lsp/mason") -- LSP installation
-require("user/lsp/treesitter") -- VIM diagnostics
+require("user/lsp/treesitter") -- Treesitter highlighting
+require("user/lsp/inlay-hints") -- Inlay hints
 
 local silent = { silent = true }
 local map = vim.keymap.set
@@ -51,7 +52,17 @@ lspconfig.pyright.setup({
 lspconfig.sumneko_lua.setup({
     settings = {
         Lua = {
+            hint = { enable = true },
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = "LuaJIT",
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
             diagnostics = {
+                -- Get the language server to recognize the `vim` global
                 globals = { "vim" },
             },
         },

@@ -8,10 +8,10 @@ catppuccin.setup({
     flavour = "macchiato", -- mocha, macchiato, frappe, latte
     styles = {
         comments = { "italic" },
-        conditionals = { "italic" },
+        conditionals = {},
         loops = {},
         functions = { "italic" },
-        keywords = {},
+        keywords = { "italic" },
         strings = {},
         variables = {},
         numbers = {},
@@ -28,8 +28,9 @@ catppuccin.setup({
             enabled = true,
             enabled_ui = true, -- enable nvim-dap-ui
         },
-        -- treesitter = true, -- FIXME: Disable for now, since no treesitter is available
+        treesitter = true,
+        bufferline = true
     },
 })
 
-vim.api.nvim_command("colorscheme catppuccin")
+catppuccin.load()

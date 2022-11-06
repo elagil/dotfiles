@@ -18,6 +18,10 @@ map("n", "[d", vim.diagnostic.goto_prev, silent)
 map("n", "]d", vim.diagnostic.goto_next, silent)
 map("n", "<leader>k", vim.diagnostic.open_float, silent)
 
+-- Editing
+-- map("n", "<c-Left>", "b", silent)
+-- map("n", "<c-Right>", "w", silent)
+
 -- Changing directory to the current buffer
 map("n", "<leader>cd", "<cmd>cd %:p:h<CR>:pwd<CR>", silent)
 
@@ -30,7 +34,7 @@ map("v", "<c-c>", '"+y', silent)
 
 -- Pasting
 map("v", "p", '"_dP', silent)
-map("n", "<leader>p", '"0p', silent)
+map("n", "<leader>p", '"0p', silent) -- Paste from yank register
 map("n", "<leader>P", '"0P', silent)
 
 -- Better indenting
@@ -60,5 +64,5 @@ map("n", "<m-]>", "<cmd>res -5<cr>", silent)
 -- Tabs
 map("n", "<leader>tc", "<cmd>tabclose<cr>", silent)
 map("n", "<leader>to", "<cmd>tabonly<cr>", silent)
-map("n", "<c-Left>", "<cmd>tabpre<cr>", silent)
-map("n", "<c-Right>", "<cmd>tabnext<cr>", silent)
+map("n", "<leader>tp", "<cmd>tabprevious<cr>", silent)
+map("n", "<leader>tn", "<cmd>tabnext<cr>", silent)

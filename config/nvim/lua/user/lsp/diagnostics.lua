@@ -9,7 +9,7 @@ for type, label in pairs(M.empty) do
 end
 
 local config = {
-    virtual_text = false,
+    virtual_text = true,
     signs = true,
     update_in_insert = false,
     underline = false,

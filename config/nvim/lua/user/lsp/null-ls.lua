@@ -43,14 +43,14 @@ end
 null_ls.setup({
     sources = {
         -- Python
-        diagnostics.pylint.with({ -- Pylint
-            diagnostics_postprocess = function(diagnostic)
-                diagnostic.code = diagnostic.message_id
-            end,
-        }),
+        -- diagnostics.pylint.with({ -- Pylint
+        --     diagnostics_postprocess = function(diagnostic)
+        --         diagnostic.code = diagnostic.message_id
+        --     end,
+        -- }),
         formatting.black.with({ extra_args = { "--fast", "--config", expand_config("python/black.toml") } }), -- Black Python formatter
         formatting.reorder_python_imports, -- Reordering of Python imports
-        diagnostics.pyproject_flake8,
+        -- diagnostics.pyproject_flake8,
 
         -- LUA
         formatting.stylua.with({ -- LUA styling

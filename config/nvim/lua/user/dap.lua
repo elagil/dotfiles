@@ -1,4 +1,3 @@
--- DAP setup
 local dap_status_ok, dap = pcall(require, "dap")
 if not dap_status_ok then
     return
@@ -52,6 +51,14 @@ dapui.setup({
             size = 40, -- 40 columns
             position = "left",
         },
+        {
+            elements = {
+                "repl",
+                "console",
+            },
+            size = 0.25, -- 25% of total lines
+            position = "bottom",
+        },
     },
 })
 
@@ -87,7 +94,8 @@ map("n", "<Leader>lp", function()
     dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
 end, silent)
 map("n", "<Leader>dl", dap.run_last, silent)
-map("n", "<leader>du", dapui.toggle, silent)
+map("n", "<leader>ds", function() dapui.toggle(1) end, silent)
+map("n", "<leader>dt", function() dapui.toggle(2) end, silent)
 map("n", "<leader>e", function()
     execute_if_dap_active(dapui.eval)
 end, silent)

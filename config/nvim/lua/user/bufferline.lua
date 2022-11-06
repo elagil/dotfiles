@@ -1,11 +1,13 @@
 -- Bufferline setup
 local status_ok, bufferline = pcall(require, "bufferline")
 if not status_ok then
+    print("Bufferline not loaded")
     return
 end
 
-local theme_status_ok, _ = pcall(require, "catppuccin")
+local theme_status_ok, _ = pcall(require, "theme")
 if not theme_status_ok then
+    print("Theme not loaded for bufferline")
     return
 end
 
