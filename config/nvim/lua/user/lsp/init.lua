@@ -21,9 +21,7 @@ local on_attach = function(_, bufnr) -- Unused variable is `client`
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    map("n", "gd", vim.lsp.buf.definition, silent)
     map("n", "<leader>fm", vim.lsp.buf.format, silent)
-    map("n", "gD", vim.lsp.buf.declaration, silent)
     map("n", "K", vim.lsp.buf.hover, silent)
     map("n", "gi", vim.lsp.buf.implementation, silent)
     map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, silent)

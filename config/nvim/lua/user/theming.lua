@@ -74,7 +74,7 @@ catppuccin.setup({
             enabled = true,
             enabled_ui = true, -- enable nvim-dap-ui
         },
-        telescope = true,
+        lsp_trouble = true,
         treesitter = true,
         bufferline = true,
     },

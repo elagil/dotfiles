@@ -3,14 +3,14 @@ M = {}
 M.symbols = { Error = " ", Warn = " ", Hint = " ", Info = " ", Other = " " }
 M.empty = { Error = "", Warn = "", Hint = "", Info = "", Other = "" }
 
-for type, label in pairs(M.empty) do
+for type, label in pairs(M.symbols) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { icon = "", text = label, texthl = hl, numhl = hl })
 end
 
 local config = {
-    virtual_text = false,
-    signs = true,
+    virtual_text = true,
+    signs = false,
     update_in_insert = false,
     underline = false,
     severity_sort = true,
