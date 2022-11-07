@@ -23,11 +23,14 @@ if not status_ok then
 end
 
 -- Have packer use a popup window
+local float_config = require("user/options").float_config
+
 packer.init({
     display = {
         open_fn = function()
-            return require("packer.util").float({ border = "rounded" })
+            return require("packer.util").float({ border = float_config.border })
         end,
+        prompt_border = float_config.border,
     },
     git = {
         clone_timeout = 300, -- Timeout, in seconds, for git clones

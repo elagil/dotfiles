@@ -6,10 +6,12 @@ end
 
 local custom_highlights = function(colors)
     -- dark --> bright, five steps
+    -- dark --> text, nine steps
     local cursor_line_dark = colors.surface0
 
     local float_dark = colors.surface0
     local float_bright = colors.overlay2
+    local float_text = colors.lavender
 
     local prompt_dark = colors.surface0
     local prompt_bright = colors.overlay2
@@ -23,8 +25,8 @@ local custom_highlights = function(colors)
 
     return {
         CursorLine = { bg = cursor_line_dark },
-        NormalFloat = { fg = float_bright, bg = float_dark }, -- Normal text in floating windows.
-        Pmenu = { fg = float_bright, bg = float_dark }, -- Popup menu: normal item.
+        NormalFloat = { fg = float_text, bg = float_dark }, -- Normal text in floating windows.
+        Pmenu = { fg = float_text, bg = float_dark }, -- Popup menu: normal item.
         -- Unchanged:
         -- PmenuSel
         -- PmenuSbar
