@@ -9,6 +9,7 @@ return packer.startup(function(use)
     use("neovim/nvim-lspconfig") -- Configurations for Nvim LSP
     use("jose-elias-alvarez/null-ls.nvim") -- Adds linters and fixers to LSP
     use("williamboman/mason.nvim") -- Install LSP configurations
+    use("williamboman/mason-lspconfig.nvim") -- Adapter between mason and lspconfig
     use({ -- Syntax highlighting with Treesitter
         "nvim-treesitter/nvim-treesitter",
         run = function()
@@ -69,7 +70,7 @@ return packer.startup(function(use)
     use("RRethy/vim-illuminate") -- Illuminate occurrences of word under cursor
     use("lukas-reineke/indent-blankline.nvim") -- Show indentation guides
     use({ "catppuccin/nvim", as = "theme" }) -- A theme
-    use({ "akinsho/bufferline.nvim", tag = "v3.*", after = "theme" }) -- A bufferline, FIXME: not loading.
+    use({ "akinsho/bufferline.nvim", tag = "v3.*" }) -- A bufferline
 
     -- Automatic setup of configuration
     if PACKER_BOOTSTRAP then
