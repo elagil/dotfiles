@@ -41,16 +41,16 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, re
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Set up individual servers
-lspconfig.clangd.setup({
+local defaults = {
     on_attach = on_attach,
     capabilities = capabilities,
-})
+}
 
-lspconfig.pyright.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
-
+lspconfig.bashls.setup(defaults)
+lspconfig.clangd.setup(defaults)
+lspconfig.pyright.setup(defaults)
+lspconfig.cmake.setup(defaults)
+lspconfig.rust_analyzer.setup(defaults)
 lspconfig.sumneko_lua.setup({
     settings = {
         Lua = {
@@ -70,16 +70,6 @@ lspconfig.sumneko_lua.setup({
             },
         },
     },
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
-
-lspconfig.cmake.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
-
-lspconfig.rust_analyzer.setup({
     on_attach = on_attach,
     capabilities = capabilities,
 })

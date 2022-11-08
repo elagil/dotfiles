@@ -1,0 +1,6 @@
+# Settings for lazygit
+gui:
+  theme:
+    selectedLineBgColor:
+    - black # set to `default` to have no background colour
+  showIcons: true
