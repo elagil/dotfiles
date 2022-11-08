@@ -4,6 +4,7 @@ local opt = vim.opt
 
 -- General
 opt.mouse = "a" -- Allows the use of a mouse
+opt.hidden = true -- Do not discard hidden buffers/terminals
 
 -- Editor appearance
 opt.number = true -- Line numbering

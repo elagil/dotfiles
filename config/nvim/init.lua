@@ -11,6 +11,7 @@ require("user/bufferline") -- A line for buffer info
 require("user/gitlines") -- Git status on the side
 require("user/comment") -- Commenting tool
 require("user/trouble") -- Show problems in a panel
+require("user/toggleterm") -- Terminal toggling tool
 require("user/dap") -- DAP setup (debug services)
 require("user/lsp") -- LSP setup (language services)
 require("user/telescope") -- Telescope setup (searching)

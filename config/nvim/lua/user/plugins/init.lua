@@ -71,6 +71,7 @@ return packer.startup(function(use)
     use("lukas-reineke/indent-blankline.nvim") -- Show indentation guides
     use({ "catppuccin/nvim", as = "theme" }) -- A theme
     use({ "akinsho/bufferline.nvim", tag = "v3.*" }) -- A bufferline
+    use({ "akinsho/toggleterm.nvim", tag = "*" }) -- Terminal opener
 
     -- Automatic setup of configuration
     if PACKER_BOOTSTRAP then
