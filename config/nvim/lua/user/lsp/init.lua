@@ -41,6 +41,11 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, re
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Set up individual servers
+lspconfig.clangd.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+
 lspconfig.pyright.setup({
     on_attach = on_attach,
     capabilities = capabilities,
@@ -57,6 +62,7 @@ lspconfig.sumneko_lua.setup({
             workspace = {
                 -- Make the server aware of Neovim runtime files
                 library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
