@@ -13,14 +13,6 @@ if not dap_python_status_ok then
     return
 end
 
-local execute_if_dap_active = function(fn)
-    if dap.session() == nil then
-        return
-    else
-        fn()
-    end
-end
-
 dapui.setup({
     floating = require("user/options").float_config,
     controls = {
@@ -95,14 +87,12 @@ map("n", "<Leader>lp", function()
 end, silent)
 map("n", "<Leader>dl", dap.run_last, silent)
 map("n", "<leader>ds", function()
-    dapui.toggle(1)
+    dapui.toggle({ layout = 1 })
 end, silent)
 map("n", "<leader>dt", function()
-    dapui.toggle(2)
+    dapui.toggle({ layout = 2 })
 end, silent)
-map("n", "<leader>e", function()
-    execute_if_dap_active(dapui.eval)
-end, silent)
+map("n", "<leader>e", dapui.eval, silent)
 map("n", "<F6>", dap.terminate, silent)
 map("n", "<F7>", dap.step_over, silent)
 map("n", "<F8>", dap.step_into, silent)
