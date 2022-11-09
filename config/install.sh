@@ -40,6 +40,12 @@ curl -L "https://github.com/jesseduffield/lazygit/releases/latest/download/lazyg
 # Link configuration files and folders
 CONFIGURATIONS="nvim toolchain lazygit"
 for CONFIGURATION in $CONFIGURATIONS; do
-    ln -s $SCRIPT_DIR/$CONFIGURATION $CONFIG_DIR/$CONFIGURATION
+    NEW_LINK=$CONFIG_DIR/$CONFIGURATION
+
+    if ! [ -L $NEW_LINK ]; then
+        ln -s $SCRIPT_DIR/$CONFIGURATION $NEW_LINK
+    else
+        echo "Link '$NEW_LINK' already exists, skipping."
+    fi
 done
 
