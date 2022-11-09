@@ -2,5 +2,7 @@
 gui:
   theme:
     selectedLineBgColor:
-    - black # set to `default` to have no background colour
+    - black
+    selectedRangeBgColor:
+    - black
   showIcons: true

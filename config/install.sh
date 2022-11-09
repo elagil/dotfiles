@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x # activate debugging from here
 SCRIPT_PATH=$(readlink -f "${BASH_SOURCE:-$0}")
 SCRIPT_DIR=$(dirname $SCRIPT_PATH)
 
