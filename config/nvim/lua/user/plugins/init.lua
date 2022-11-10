@@ -18,10 +18,18 @@ return packer.startup(function(use)
     })
     use("lvimuser/lsp-inlayhints.nvim") -- Inlay hint support
 
-    -- Debugging
+    -- Debugging and testing
     use("mfussenegger/nvim-dap") -- Debug adapters
     use("mfussenegger/nvim-dap-python") -- Python debug adapter
     use("rcarriga/nvim-dap-ui") -- Debugging UI
+    use({ -- Test interface
+        "nvim-neotest/neotest",
+        requires = {
+            "nvim-neotest/neotest-python",
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+    })
 
     -- Code completion
     use("hrsh7th/nvim-cmp") -- The completion tool itself
@@ -53,10 +61,18 @@ return packer.startup(function(use)
     use({ "nvim-telescope/telescope-file-browser.nvim" }) -- Telescope file browser
 
     -- Other tools
+    use("nvim-tree/nvim-web-devicons") -- An icons set, required by multiple other plugins
     use("mg979/vim-visual-multi") -- Multicursor, like in VSCode
     use("nvim-lualine/lualine.nvim") -- A nice status line
     use("numToStr/Comment.nvim") -- Commenting tool
-    use("nvim-tree/nvim-tree.lua") -- A file tree viewer
+    use({
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+        },
+    })
     use("tpope/vim-fugitive") -- A git wrapper
     use("lewis6991/gitsigns.nvim") -- git signs in the sidebar
     use("folke/trouble.nvim") -- Pretty display of diagnostics
@@ -66,7 +82,6 @@ return packer.startup(function(use)
             vim.fn["mkdp#util#install"]()
         end,
     })
-    use("nvim-tree/nvim-web-devicons") -- An icons set, required by multiple other plugins
     use("RRethy/vim-illuminate") -- Illuminate occurrences of word under cursor
     use("lukas-reineke/indent-blankline.nvim") -- Show indentation guides
     use({ "catppuccin/nvim", as = "theme" }) -- A theme
