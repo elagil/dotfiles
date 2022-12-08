@@ -12,6 +12,7 @@ BIN_DIR=/usr/local/bin
 
 # Install essential applications
 sudo apt-get install\
+    git\
     curl\
     build-essential\
     fd-find\
@@ -48,3 +49,6 @@ for CONFIGURATION in $CONFIGURATIONS; do
     fi
 done
 
+# Use nvim for git
+git config --global merge.tool nvim
+git config --global mergetool.nvim.cmd nvim -d

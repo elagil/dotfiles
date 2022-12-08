@@ -1,4 +1,3 @@
--- Set up the visual appearance
 local status_ok, catppuccin = pcall(require, "catppuccin")
 if not status_ok then
     return
@@ -60,6 +59,12 @@ local custom_highlights = function(colors)
         TelescopeResultsBorder = { fg = results_dark, bg = results_dark },
 
         TelescopeSelection = { bg = selection_dark },
+
+        -- visual-multi
+        VM_Mono_hl = { fg = colors.lavender, bg = colors.mantle }, -- the highlight in cursor mode
+        -- VM_Extend_hl -- in extend mode (the selections)
+        VM_Cursor_hl = { fg = colors.rosewater, bg = colors.blue }, -- in extend mode (the cursors)
+        -- VM_Insert_hl -- in insert mode (the virtual cursors
     }
 end
 
@@ -91,6 +96,7 @@ catppuccin.setup({
         lsp_trouble = true,
         treesitter = true,
         bufferline = true,
+        neotree = true,
     },
 })
 

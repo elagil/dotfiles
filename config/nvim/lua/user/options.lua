@@ -1,4 +1,3 @@
--- Settings
 local M = {}
 local opt = vim.opt
 

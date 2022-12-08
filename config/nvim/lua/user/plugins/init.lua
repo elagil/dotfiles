@@ -5,6 +5,7 @@ local packer = require("packer")
 return packer.startup(function(use)
     use("wbthomason/packer.nvim") -- Packer can manage itself
 
+    --------------------
     -- Language services
     use("neovim/nvim-lspconfig") -- Configurations for Nvim LSP
     use("jose-elias-alvarez/null-ls.nvim") -- Adds linters and fixers to LSP
@@ -18,6 +19,7 @@ return packer.startup(function(use)
     })
     use("lvimuser/lsp-inlayhints.nvim") -- Inlay hint support
 
+    ------------------------
     -- Debugging and testing
     use("mfussenegger/nvim-dap") -- Debug adapters
     use("mfussenegger/nvim-dap-python") -- Python debug adapter
@@ -31,6 +33,7 @@ return packer.startup(function(use)
         },
     })
 
+    ------------------
     -- Code completion
     use("hrsh7th/nvim-cmp") -- The completion tool itself
     use("hrsh7th/cmp-nvim-lsp") -- LSP completion source
@@ -40,11 +43,13 @@ return packer.startup(function(use)
     use("hrsh7th/cmp-path") -- Completions for file system paths and directories
     use("hrsh7th/cmp-cmdline") -- Completions for the VIM command line
 
+    -----------
     -- Snippets
     use("rafamadriz/friendly-snippets") -- Snippet database
     use("L3MON4D3/LuaSnip") -- Snippet engine
     use("saadparwaiz1/cmp_luasnip") -- Snippet adapter for cmp
 
+    ----------------------------------
     -- Telescope, a global search tool
     use({ -- Telescope itself
         "nvim-telescope/telescope.nvim",
@@ -60,11 +65,25 @@ return packer.startup(function(use)
     })
     use({ "nvim-telescope/telescope-file-browser.nvim" }) -- Telescope file browser
 
-    -- Other tools
-    use("nvim-tree/nvim-web-devicons") -- An icons set, required by multiple other plugins
-    use("mg979/vim-visual-multi") -- Multicursor, like in VSCode
-    use("nvim-lualine/lualine.nvim") -- A nice status line
+    use({ -- A markdown previewer
+        "iamcco/markdown-preview.nvim",
+        run = function()
+            vim.fn["mkdp#util#install"]()
+        end,
+    })
+    use({ "akinsho/toggleterm.nvim", tag = "*" }) -- Terminal opener
+
+    ---------------------------------
+    -- Movement and text manipulation
     use("numToStr/Comment.nvim") -- Commenting tool
+    use({ "ggandor/leap.nvim" }) -- Jump to text in the visible buffer
+    use({ "kylechui/nvim-surround", tag = "*" }) -- Surround selections with text
+
+    ----------------------------------
+    -- Editor appearance and usability
+    use("nvim-tree/nvim-web-devicons") -- An icons set, required by multiple other plugins
+
+    -- neotree
     use({
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
@@ -73,20 +92,18 @@ return packer.startup(function(use)
             "MunifTanjim/nui.nvim",
         },
     })
-    use("tpope/vim-fugitive") -- A git wrapper
-    use("lewis6991/gitsigns.nvim") -- git signs in the sidebar
-    use("folke/trouble.nvim") -- Pretty display of diagnostics
-    use({ -- A markdown previewer
-        "iamcco/markdown-preview.nvim",
-        run = function()
-            vim.fn["mkdp#util#install"]()
-        end,
-    })
+    use("mrbjarksen/neo-tree-diagnostics.nvim") -- neotree diagnostics source
+
+    use("nvim-lualine/lualine.nvim") -- A nice status line
     use("RRethy/vim-illuminate") -- Illuminate occurrences of word under cursor
     use("lukas-reineke/indent-blankline.nvim") -- Show indentation guides
     use({ "catppuccin/nvim", as = "theme" }) -- A theme
     use({ "akinsho/bufferline.nvim", tag = "v3.*" }) -- A bufferline
-    use({ "akinsho/toggleterm.nvim", tag = "*" }) -- Terminal opener
+
+    ------
+    -- Git
+    use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+    use("lewis6991/gitsigns.nvim") -- git signs in the sidebar
 
     -- Automatic setup of configuration
     if PACKER_BOOTSTRAP then

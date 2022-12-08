@@ -1,10 +1,9 @@
--- Lualine setup
 local status_ok, lualine = pcall(require, "lualine")
 if not status_ok then
     return
 end
 
-lsp_diagnostics = require("user/lsp/diagnostics")
+local lsp_diagnostics = require("user/lsp/diagnostics")
 
 local hide_in_width = function()
     return vim.fn.winwidth(0) > 80

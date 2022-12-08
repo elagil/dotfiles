@@ -1,4 +1,3 @@
--- Telescope search utility
 local status_ok, telescope = pcall(require, "telescope")
 if not status_ok then
     return
@@ -13,7 +12,6 @@ local silent = { silent = true }
 map("n", "<c-t>", function()
     builtin.find_files({ hidden = true })
 end, silent)
-map("n", "<c-g>", builtin.git_files, silent)
 map("n", "<c-p>", builtin.oldfiles, silent)
 map("n", "<c-f>", builtin.live_grep, silent)
 map("n", "<leader>fs", builtin.lsp_document_symbols, silent)

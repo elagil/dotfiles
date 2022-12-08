@@ -1,4 +1,3 @@
--- Git diff in the signs column
 local status_ok, gitsigns = pcall(require, "gitsigns")
 if not status_ok then
     return
