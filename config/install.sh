@@ -11,6 +11,7 @@ mkdir -p $LOCAL_BIN_DIR
 BIN_DIR=/usr/local/bin
 
 # Install essential applications
+sudo apt-get update
 sudo apt-get install\
     git\
     curl\
