@@ -9,7 +9,7 @@ local hide_in_width = function()
     return vim.fn.winwidth(0) > 80
 end
 
-local shorten = function(str, length)
+local shorten = function(str, context, length)
     length = length or 20
     local dots = 3
 

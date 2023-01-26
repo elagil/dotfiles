@@ -7,12 +7,14 @@ echo "Running from '$SCRIPT_DIR'."
 CONFIG_DIR=~/.config
 LOCAL_BIN_DIR=~/.local/bin
 mkdir -p $LOCAL_BIN_DIR
+mkdir -p $CONFIG_DIR
 
 BIN_DIR=/usr/local/bin
 
 # Install essential applications
 sudo apt-get update
 sudo apt-get install\
+    unzip\
     git\
     curl\
     build-essential\
