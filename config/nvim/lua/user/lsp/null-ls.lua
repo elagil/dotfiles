@@ -29,8 +29,6 @@ local format_on_save = function(client, bufnr)
             callback = function()
                 -- neovim 0.8
                 vim.lsp.buf.format({ bufnr = bufnr })
-                -- neovim 0.7
-                -- vim.lsp.buf.formatting_sync()
             end,
         })
     end

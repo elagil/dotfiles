@@ -6,7 +6,7 @@ end
 
 require("user/lsp/diagnostics") -- VIM diagnostics
 require("user/lsp/completion") -- Autocompletion
-local null_ls = require("user/lsp/null-ls") -- Linter/fixer engine
+require("user/lsp/null-ls") -- Linter/fixer engine
 require("user/lsp/mason") -- LSP installation
 require("user/lsp/treesitter") -- Treesitter highlighting
 require("user/lsp/inlay-hints") -- Inlay hints

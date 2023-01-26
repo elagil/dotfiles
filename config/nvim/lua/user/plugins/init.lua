@@ -11,6 +11,7 @@ return packer.startup(function(use)
     use("jose-elias-alvarez/null-ls.nvim") -- Adds linters and fixers to LSP
     use("williamboman/mason.nvim") -- Install LSP configurations
     use("williamboman/mason-lspconfig.nvim") -- Adapter between mason and lspconfig
+    use("jay-babu/mason-null-ls.nvim") -- Adapter between mason and null-ls
     use({ -- Syntax highlighting with Treesitter
         "nvim-treesitter/nvim-treesitter",
         run = function()

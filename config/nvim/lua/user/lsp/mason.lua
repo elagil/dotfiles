@@ -9,5 +9,11 @@ if not lspconfig_status_ok then
     return
 end
 
+local null_ls_status_ok, mason_null_ls = pcall(require, "mason-null-ls")
+if not null_ls_status_ok then
+    return
+end
+
 mason.setup()
 mason_lspconfig.setup({automatic_installation = true})
+mason_null_ls.setup({automatic_installation = true})
