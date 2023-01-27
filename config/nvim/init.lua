@@ -18,3 +18,4 @@ require("user/dap") -- DAP setup (debug services)
 require("user/neotest") -- Test interface
 require("user/lsp") -- LSP setup (language services)
 require("user/telescope") -- Telescope setup (searching)
+require("user/whichkey") -- Keymap display

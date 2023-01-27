@@ -23,6 +23,7 @@ local on_attach = function(_, bufnr) -- Unused variable is `client`
 
     map("n", "<leader>fm", vim.lsp.buf.format, silent)
     map("n", "K", vim.lsp.buf.hover, silent)
+    map("n", "<leader>k", vim.lsp.diagnostic.show_line_diagnostics, silent)
     map("n", "gi", vim.lsp.buf.implementation, silent)
     map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, silent)
     map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, silent)
