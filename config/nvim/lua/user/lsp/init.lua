@@ -12,7 +12,7 @@ require("user/lsp/treesitter") -- Treesitter highlighting
 require("user/lsp/inlay-hints") -- Inlay hints
 
 local silent = {
-    silent = true
+    silent = true,
 }
 local map = vim.keymap.set
 
@@ -45,7 +45,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- Set up individual servers
 local defaults = {
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
 }
 
 lspconfig.bashls.setup(defaults)
@@ -53,27 +53,27 @@ lspconfig.clangd.setup(defaults)
 lspconfig.pyright.setup(defaults)
 lspconfig.cmake.setup(defaults)
 lspconfig.rust_analyzer.setup(defaults)
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
     settings = {
         Lua = {
             hint = {
-                enable = true
+                enable = true,
             },
             runtime = {
                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = "LuaJIT"
+                version = "LuaJIT",
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
                 library = vim.api.nvim_get_runtime_file("", true),
-                checkThirdParty = false
+                checkThirdParty = false,
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
-                globals = {"vim"}
-            }
-        }
+                globals = { "vim" },
+            },
+        },
     },
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
 })

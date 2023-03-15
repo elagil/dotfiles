@@ -5,6 +5,15 @@ end
 
 leap.add_default_mappings()
 
+local map = vim.keymap.set
+local silent = { silent = true }
+
+-- Bidirectional search
+map("n", ";", function()
+    local current_window = vim.fn.win_getid()
+    leap.leap({ target_windows = { current_window } })
+end, silent)
+
 -- Custom settings
 leap.opts.special_keys = {
     repeat_search = "<tab>",

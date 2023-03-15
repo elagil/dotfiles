@@ -2,6 +2,10 @@ require("user/plugins/packer-setup")
 
 local packer = require("packer")
 
+local no_vscode = function()
+    return vim.fn.exists("g:vscode") == 0
+end
+
 return packer.startup(function(use)
     use("wbthomason/packer.nvim") -- Packer can manage itself
 
@@ -76,7 +80,7 @@ return packer.startup(function(use)
 
     ---------------------------------
     -- Movement and text manipulation
-    use("numToStr/Comment.nvim") -- Commenting tool
+    use({ "numToStr/Comment.nvim" }) -- Commenting tool
     use({ "ggandor/leap.nvim" }) -- Jump to text in the visible buffer
     use({ "kylechui/nvim-surround", tag = "*" }) -- Surround selections with text
 
@@ -96,8 +100,10 @@ return packer.startup(function(use)
     use("mrbjarksen/neo-tree-diagnostics.nvim") -- neotree diagnostics source
 
     use("nvim-lualine/lualine.nvim") -- A nice status line
-    use("RRethy/vim-illuminate") -- Illuminate occurrences of word under cursor
-    use("lukas-reineke/indent-blankline.nvim") -- Show indentation guides
+
+    use({ "RRethy/vim-illuminate", cond = { no_vscode } }) -- Illuminate occurrences of word under cursor
+
+    use({ "lukas-reineke/indent-blankline.nvim", cond = { no_vscode } }) -- Show indentation guides
     use({ "catppuccin/nvim", as = "theme" }) -- A theme
     use({ "akinsho/bufferline.nvim", tag = "v3.*" }) -- A bufferline
     use({ "folke/which-key.nvim" }) -- Display key mappings
