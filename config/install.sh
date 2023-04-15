@@ -12,8 +12,10 @@ mkdir -p $CONFIG_DIR
 BIN_DIR=/usr/local/bin
 
 # Install essential applications
+sudo apt-add-repository ppa:fish-shell/release-3
 sudo apt-get update
 sudo apt-get install\
+    fish\
     unzip\
     git\
     curl\
@@ -23,6 +25,12 @@ sudo apt-get install\
     fzf\
     python3-venv\
     wl-clipboard
+
+# Use fish as default shell
+chsh -s $(which fish) 
+
+# Install oh-my-fish
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
 
 sudo ln -s $(which fdfind) $BIN_DIR/fd
 
