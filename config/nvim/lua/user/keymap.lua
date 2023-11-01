@@ -1,4 +1,6 @@
-local silent = { silent = true }
+local silent = {
+    silent = true
+}
 local map = vim.keymap.set
 local g = vim.g
 
@@ -12,21 +14,13 @@ g.mapleader = " "
 --   term_mode = "t"
 --   command_mode = "c"
 
--- Diagnostics
-map("n", "[d", vim.diagnostic.goto_prev, silent)
-map("n", "]d", vim.diagnostic.goto_next, silent)
-map("n", "<leader>k", vim.diagnostic.open_float, silent)
-
--- Changing directory to the current buffer
-map("n", "<leader>cd", "<cmd>cd %:p:h<CR>:pwd<CR>", silent)
-
 -- Quitting
 map("n", "<leader>q", "<cmd>qa<cr>", silent)
 map("n", "<leader>Q", "<cmd>qa!<cr>", silent)
 
 -- Yank/paste
 map("v", "p", '"_dP', silent) -- Paste in visual mode without yanking selection
-map({ "n", "v" }, "<leader>y", '"+y', silent) -- Yank to system clipboard
+map({"n", "v"}, "<leader>y", '"+y', silent) -- Yank to system clipboard
 map("n", "<leader>p", '"0p', silent) -- Paste from yank register
 map("n", "<leader>P", '"0P', silent) -- Paste before from yank register
 
