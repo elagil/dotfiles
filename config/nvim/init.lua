@@ -1,7 +1,7 @@
--- Load plugins first
-require("user/plugins")
+-- General
+require("user/options")
+require("user/keymap")
+require("user/lazy") -- Plugin manager
 
 -- Setup and load plugins
-require("user/options") -- General options
-require("user/keymap") -- General keymap
 require("user/leap") -- Movement within a buffer
