@@ -20,36 +20,19 @@ sudo apt-get install\
     git\
     curl\
     build-essential\
-    fd-find\
     ripgrep\
     fzf\
     python3-venv\
     wl-clipboard
 
 # Use fish as default shell
-chsh -s $(which fish) 
+chsh -s $(which fish)
 
 # Install oh-my-fish
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
 
-sudo ln -s $(which fdfind) $BIN_DIR/fd
-
-# Install NPM
-curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - &&\
-sudo apt-get install -y nodejs
-
-# lazygit
-# Find out latest version
-LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest"\
-    | grep '"tag_name":'\
-    |  sed -E 's/.*"v*([^"]+)".*/\1/')
-
-# Install it
-curl -L "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"\
-    | sudo tar xzf - -C $BIN_DIR lazygit
-
 # Link configuration files and folders
-CONFIGURATIONS="nvim toolchain lazygit"
+CONFIGURATIONS="nvim fish"
 for CONFIGURATION in $CONFIGURATIONS; do
     NEW_LINK=$CONFIG_DIR/$CONFIGURATION
 
@@ -60,6 +43,6 @@ for CONFIGURATION in $CONFIGURATIONS; do
     fi
 done
 
-# Use nvim for git
-git config --global merge.tool nvim
-git config --global mergetool.nvim.cmd nvim -d
+# Use vscode for git
+git config --global merge.tool code
+git config --global mergetool.code.cmd code -d
