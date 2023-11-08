@@ -21,11 +21,11 @@ if not vim.g.vscode then
 end
 
 -- Yank/paste
+map("v", "<C-c>", '"+y', silent) -- Yank to system clipboard
+
 map("v", "p", '"_dP', silent) -- Paste in visual mode without yanking selection
-map({"n", "v"}, "<leader>d", '"_d', silent) -- Delete without yanking selection
 map("n", "<leader>p", '"0p', silent) -- Paste from yank register
 map("n", "<leader>P", '"0P', silent) -- Paste before from yank register
-map({"n", "v"}, "<leader>y", '"+y', silent) -- Yank to system clipboard
 
 -- Better indenting
 map("v", "<", "<gv", silent)
