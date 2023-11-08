@@ -12,6 +12,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-plugins = {"ggandor/leap.nvim"}
+local plugins = {
+  "ggandor/leap.nvim",
+}
 
 require("lazy").setup(plugins)
