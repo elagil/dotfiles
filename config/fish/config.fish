@@ -3,7 +3,7 @@ if status is-interactive
 end
 
 # FZF key bindings
-fzf_configure_bindings --git_log=\cg --git_status=\cs --history=\cr --variables=\cv --directory=\cp
+fzf_configure_bindings --git_log=\cb --git_status=\cs --history=\cr --variables=\cu --directory=\ct
 set -x FZF_DEFAULT_OPTS "\
 --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
 --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
