@@ -2,7 +2,21 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-set -Ux WSL2_HOST_IP (cat /etc/resolv.conf | grep nameserver | cut -d ' ' -f 2)
+# FZF key bindings
+fzf_configure_bindings --git_log=\cg --git_status=\cs --history=\cr --variables=\cv --directory=\cp
+set -x FZF_DEFAULT_OPTS "\
+--color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+--color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+--color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
+--cycle \
+--border \
+--height 90% \
+--layout=reverse \
+--preview-window=wrap \
+--marker='*' \
+"
+
+set -x WSL2_HOST_IP (cat /etc/resolv.conf | grep nameserver | cut -d ' ' -f 2)
 
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.local/bin

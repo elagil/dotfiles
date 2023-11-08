@@ -20,16 +20,31 @@ sudo apt-get install\
     git\
     curl\
     build-essential\
-    ripgrep\
+    bat\
     fzf\
+    fd-find\
     python3-venv\
     wl-clipboard
+
+mkdir -p ~/.local/bin
+
+# Create a symlink fot bat
+ln -s $(which batcat) ~/.local/bin/bat
+
+# Create a symlink for fd
+ln -s $(which fdfind) ~/.local/bin/fd
 
 # Use fish as default shell
 chsh -s $(which fish)
 
-# Install oh-my-fish
-curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+# Install fisher
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+
+# Use FZF within fish, with practical key bindings
+fisher install PatrickF1/fzf.fish
+
+# Install a theme.
+fisher install oh-my-fish/theme-bobthefish
 
 # Link configuration files and folders
 CONFIGURATIONS="nvim fish"

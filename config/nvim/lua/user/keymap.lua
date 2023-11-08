@@ -15,8 +15,10 @@ g.mapleader = " "
 --   command_mode = "c"
 
 -- Quitting
-map("n", "<leader>q", "<cmd>qa<cr>", silent)
-map("n", "<leader>Q", "<cmd>qa!<cr>", silent)
+if not vim.g.vscode then
+    map("n", "<leader>q", "<cmd>qa<cr>", silent)
+    map("n", "<leader>Q", "<cmd>qa!<cr>", silent)
+end
 
 -- Yank/paste
 map("v", "p", '"_dP', silent) -- Paste in visual mode without yanking selection
