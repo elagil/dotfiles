@@ -21,7 +21,6 @@ sudo apt-get install\
     curl\
     build-essential\
     bat\
-    fzf\
     fd-find\
     python3-venv\
     wl-clipboard
@@ -38,13 +37,16 @@ ln -s $(which fdfind) ~/.local/bin/fd
 chsh -s $(which fish)
 
 # Install fisher
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 
 # Use FZF within fish, with practical key bindings
-fisher install PatrickF1/fzf.fish
+fish -c "fisher install PatrickF1/fzf.fish"
 
 # Install a theme.
-fisher install oh-my-fish/theme-bobthefish
+fish -c "fisher install oh-my-fish/theme-bobthefish"
+fish -c "fisher install catppuccin/fish"
+fish -c "yes | fish_config theme save \"Catppuccin Macchiato\""
+
 
 # Link configuration files and folders
 CONFIGURATIONS="nvim fish"
