@@ -15,11 +15,11 @@ g.mapleader = " "
 --   command_mode = "c"
 
 -- Yank/paste
-map("v", "<C-c>", '"+y', silent)     -- Yank to system clipboard
+map({ "n", "v" }, "<leader>y", '"+y', silent) -- Yank to system clipboard
 
-map("v", "p", '"_dP', silent)        -- Paste in visual mode without yanking selection
-map("n", "<leader>p", '"0p', silent) -- Paste from yank register
-map("n", "<leader>P", '"0P', silent) -- Paste before from yank register
+map("v", "p", '"_dP', silent)                 -- Paste in visual mode without yanking selection
+map("n", "<leader>p", '"+p', silent)          -- Paste from system clipboard
+map("n", "<leader>P", '"+P', silent)          -- Paste before from system clipboard
 
 -- Better indenting
 map("v", "<", "<gv", silent)
