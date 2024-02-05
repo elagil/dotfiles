@@ -27,7 +27,7 @@ sudo apt-get install\
 
 mkdir -p ~/.local/bin
 
-# Create a symlink fot bat
+# Create a symlink for bat
 ln -s $(which batcat) ~/.local/bin/bat
 
 # Create a symlink for fd
