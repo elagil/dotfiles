@@ -28,3 +28,7 @@ fish_add_path /home/linuxbrew/.linuxbrew/bin
 # fish_add_path ~/repo/c-capnproto
 # fish_add_path /opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin
 # fish_add_path /mnt/c/tools/openocd/bin
+
+# opam configuration
+source /home/adf/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+status --is-interactive; and rbenv init - fish | source

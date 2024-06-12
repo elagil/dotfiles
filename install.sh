@@ -4,10 +4,8 @@ SCRIPT_DIR=$(dirname $SCRIPT_PATH)
 
 echo "Running from '$SCRIPT_DIR'."
 
-CONFIG_DIR=~/.config
 LOCAL_BIN_DIR=~/.local/bin
 mkdir -p $LOCAL_BIN_DIR
-mkdir -p $CONFIG_DIR
 
 BIN_DIR=/usr/local/bin
 
@@ -15,6 +13,7 @@ BIN_DIR=/usr/local/bin
 sudo apt-add-repository ppa:fish-shell/release-3
 sudo apt-get update
 sudo apt-get install\
+    stow\
     fish\
     unzip\
     git\
@@ -26,6 +25,9 @@ sudo apt-get install\
     wl-clipboard
 
 mkdir -p ~/.local/bin
+
+# Create symlinks for configuration
+stow ./.config -t ~ -v
 
 # Create a symlink for bat
 ln -s $(which batcat) ~/.local/bin/bat
@@ -44,22 +46,3 @@ fish -c "fisher install PatrickF1/fzf.fish"
 
 # Install a theme.
 fish -c "fisher install oh-my-fish/theme-bobthefish"
-fish -c "fisher install catppuccin/fish"
-fish -c "yes | fish_config theme save \"Catppuccin Macchiato\""
-
-
-# Link configuration files and folders
-CONFIGURATIONS="nvim fish"
-for CONFIGURATION in $CONFIGURATIONS; do
-    NEW_LINK=$CONFIG_DIR/$CONFIGURATION
-
-    if ! [ -L $NEW_LINK ]; then
-        ln -s $SCRIPT_DIR/$CONFIGURATION $NEW_LINK
-    else
-        echo "Link '$NEW_LINK' already exists, skipping."
-    fi
-done
-
-# Use vscode for git
-git config --global merge.tool code
-git config --global mergetool.code.cmd code -d
